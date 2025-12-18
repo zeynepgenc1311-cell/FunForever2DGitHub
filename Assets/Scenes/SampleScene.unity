@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 1221293441}
   m_Layer: 0
   m_Name: "tunu\u015F"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1397,7 +1397,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9b4c91e477e964d90b94c474362b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySlots: []
+  inventorySlots:
+  - {fileID: 785811634}
+  - {fileID: 377463768}
+  - {fileID: 434048056}
+  - {fileID: 1337756171}
+  - {fileID: 467748436}
+  - {fileID: 0}
 --- !u!114 &1221293441
 MonoBehaviour:
   m_ObjectHideFlags: 0
