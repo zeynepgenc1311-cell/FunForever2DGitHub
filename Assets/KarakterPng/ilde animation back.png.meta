@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 83a4f56d9a135b54797c1e7bce1aa4c2
+guid: 12c1d319393d80649a5aabb5f1d01990
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk animation back_0
+      name: ilde animation back_0
       rect:
         serializedVersion: 2
         x: 209
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 693edb93292832041ae0907c26747d04
-      internalID: 2038278395
+      spriteID: 01c520d3585c04a4885448c621b29da9
+      internalID: -1801228265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk animation back_1
+      name: ilde animation back_1
       rect:
         serializedVersion: 2
         x: 1409
         y: 1409
         width: 782
-        height: 871
+        height: 842
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71ab750f5a65d504f88a780c878df496
-      internalID: 823641117
+      spriteID: bcf5cf30fb158a44780bcbb24f30cea8
+      internalID: -1088673345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk animation back_2
+      name: ilde animation back_2
       rect:
         serializedVersion: 2
         x: 209
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f53ea85ef6f63a4e89aa110c8b2ba15
-      internalID: -1655930029
+      spriteID: 42ab9fa2bda392f46aefc70355816124
+      internalID: -587756684
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk animation back_3
+      name: ilde animation back_3
       rect:
         serializedVersion: 2
         x: 1409
         y: 209
         width: 782
-        height: 871
+        height: 842
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57349327025ac254c994895c3c2ea3aa
-      internalID: -1158098354
+      spriteID: f89d2dee55d771047836be6f35b050bc
+      internalID: -1165765226
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      walk animation back_0: 2038278395
-      walk animation back_1: 823641117
-      walk animation back_2: -1655930029
-      walk animation back_3: -1158098354
+      ilde animation back_0: -1801228265
+      ilde animation back_1: -1088673345
+      ilde animation back_2: -587756684
+      ilde animation back_3: -1165765226
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

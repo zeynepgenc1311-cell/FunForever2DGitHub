@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 83a4f56d9a135b54797c1e7bce1aa4c2
+guid: f5e353014a03eff4090c5ad5b9374d79
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk animation back_0
+      name: idle animation right_0
       rect:
         serializedVersion: 2
-        x: 209
+        x: 239
         y: 1409
-        width: 782
+        width: 632
         height: 871
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 693edb93292832041ae0907c26747d04
-      internalID: 2038278395
+      spriteID: 80e8de53f85d5ad46aba88af96eb594e
+      internalID: -2043389168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk animation back_1
+      name: idle animation right_1
       rect:
         serializedVersion: 2
-        x: 1409
+        x: 1439
         y: 1409
-        width: 782
-        height: 871
+        width: 632
+        height: 842
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,19 +145,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71ab750f5a65d504f88a780c878df496
-      internalID: 823641117
+      spriteID: e457d81e9b7815f448f30f9e80f709fc
+      internalID: 1113494227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk animation back_2
+      name: idle animation right_2
       rect:
         serializedVersion: 2
-        x: 209
+        x: 239
         y: 209
-        width: 782
+        width: 632
         height: 871
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f53ea85ef6f63a4e89aa110c8b2ba15
-      internalID: -1655930029
+      spriteID: 382173de0beb6d84d9fa7f26a36ad389
+      internalID: -32055804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk animation back_3
+      name: idle animation right_3
       rect:
         serializedVersion: 2
-        x: 1409
+        x: 1439
         y: 209
-        width: 782
-        height: 871
+        width: 632
+        height: 842
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57349327025ac254c994895c3c2ea3aa
-      internalID: -1158098354
+      spriteID: b0eb558df12565d46b5ac8d43f191659
+      internalID: 918494173
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      walk animation back_0: 2038278395
-      walk animation back_1: 823641117
-      walk animation back_2: -1655930029
-      walk animation back_3: -1158098354
+      idle animation right_0: -2043389168
+      idle animation right_1: 1113494227
+      idle animation right_2: -32055804
+      idle animation right_3: 918494173
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
