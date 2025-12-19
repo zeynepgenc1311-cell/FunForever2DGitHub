@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fa72c0e8f085ad4eba8a1d0200c7f20, type: 3}
-  m_Name: New Item 2
+  m_Name: New Item 3
   m_EditorClassIdentifier: 
-  itemName: "k\u0131l\u0131\xE7"
-  itemSprite: {fileID: 21300000, guid: 4ebc70b29cf84034aa52eafdbca3951d, type: 3}
+  itemName: kalkan
+  itemSprite: {fileID: 21300000, guid: fb6df7dc5ceebe744a0ea02ca322493c, type: 3}
   itemType: 1
-  equipSlot: 1
-  equipPrefab: {fileID: 3446854509002843390, guid: 405eba7284ed08142aa0095a9a7131b1, type: 3}
+  equipSlot: 2
+  equipPrefab: {fileID: 6904702320379547650, guid: 50e557ffafd08914ba25dc889874c2d8, type: 3}
