@@ -10,7 +10,9 @@ public enum EquipSlot
 {
     Wing,
     Weapon,
-    Shield
+    Shield,
+    Helmet,
+    Armor
 }
 
 [CreateAssetMenu(menuName = "Inventory/Item")]

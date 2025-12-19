@@ -8,28 +8,28 @@ public class Player : MonoBehaviour
     public Transform wingPoint;
     public Transform handPoint;
     public Transform shieldPoint;
+    public Transform helmetPoint;
+    public Transform armorPoint;
 
     private GameObject equippedWing;
     private GameObject equippedWeapon;
     private GameObject equippedShield;
+    private GameObject equippedHelmet;
+    private GameObject equippedArmor;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            UseSlot(0);
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            UseSlot(1);
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            UseSlot(2);
+        if (Input.GetKeyDown(KeyCode.Alpha1)) UseSlot(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) UseSlot(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) UseSlot(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) UseSlot(3);
+        if (Input.GetKeyDown(KeyCode.Alpha5)) UseSlot(4);
     }
 
     // ================= INVENTORY =================
 
     public void AddItem(Item newItem)
     {
-        // Stack
         foreach (ItemSlot slot in slots)
         {
             if (!slot.isEmpty && slot.item == newItem)
@@ -39,7 +39,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        // Boş slot
         foreach (ItemSlot slot in slots)
         {
             if (slot.isEmpty)
@@ -62,7 +61,6 @@ public class Player : MonoBehaviour
         if (slot.isEmpty || slot.item == null) return;
 
         Item item = slot.item;
-
         if (item.itemType != ItemType.Equipment) return;
 
         switch (item.equipSlot)
@@ -77,6 +75,14 @@ public class Player : MonoBehaviour
 
             case EquipSlot.Shield:
                 ToggleEquip(ref equippedShield, shieldPoint, item.equipPrefab);
+                break;
+
+            case EquipSlot.Helmet:
+                ToggleEquip(ref equippedHelmet, helmetPoint, item.equipPrefab);
+                break;
+
+            case EquipSlot.Armor:
+                ToggleEquip(ref equippedArmor, armorPoint, item.equipPrefab);
                 break;
         }
     }
