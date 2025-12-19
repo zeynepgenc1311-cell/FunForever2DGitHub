@@ -2358,7 +2358,7 @@ Transform:
   m_GameObject: {fileID: 1845009721}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 57.1, y: 44, z: 70.69862}
+  m_LocalPosition: {x: 57.1, y: 41.9, z: 70.69862}
   m_LocalScale: {x: 39.260796, y: 39.260796, z: 39.260796}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2545,8 +2545,8 @@ Transform:
   m_GameObject: {fileID: 1962685546}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2, y: -2.6, z: 70.44106}
-  m_LocalScale: {x: 39.260796, y: 39.260796, z: 39.260796}
+  m_LocalPosition: {x: -1.7, y: 2.2, z: 70.44106}
+  m_LocalScale: {x: 11.348824, y: 11.678169, z: 39.260796}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1799931333}
@@ -2845,8 +2845,16 @@ PrefabInstance:
       value: SandHealerStaff1
       objectReference: {fileID: 0}
     - target: {fileID: 8268347800991494315, guid: 405eba7284ed08142aa0095a9a7131b1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.13953516
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268347800991494315, guid: 405eba7284ed08142aa0095a9a7131b1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1977422
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268347800991494315, guid: 405eba7284ed08142aa0095a9a7131b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.172
+      value: -1.31
       objectReference: {fileID: 0}
     - target: {fileID: 8268347800991494315, guid: 405eba7284ed08142aa0095a9a7131b1, type: 3}
       propertyPath: m_LocalPosition.y
