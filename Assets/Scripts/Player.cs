@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
     public ItemSlot[] slots;
 
+    [Header("Equipment")]
     public Transform wingPoint;
     private GameObject equippedWing;
 
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
             UseSlot(0);
         }
     }
+
+    // ================= INVENTORY =================
 
     public void AddItem(Item newItem)
     {
@@ -42,10 +45,10 @@ public class Player : MonoBehaviour
 
     void UseSlot(int index)
     {
-        if (index >= slots.Length) return;
+        if (index < 0 || index >= slots.Length) return;
 
         ItemSlot slot = slots[index];
-        if (slot.isEmpty) return;
+        if (slot.isEmpty || slot.item == null) return;
 
         Item item = slot.item;
 
@@ -55,8 +58,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    // ================= EQUIP =================
+
     void ToggleEquip(Item item)
     {
+        if (wingPoint == null)
+        {
+            Debug.LogError("WingPoint atanmadı!");
+            return;
+        }
+
         if (equippedWing != null)
         {
             Destroy(equippedWing);
@@ -65,7 +76,17 @@ public class Player : MonoBehaviour
         }
         else
         {
+            if (item.equipPrefab == null)
+            {
+                Debug.LogError("Equip Prefab boş!");
+                return;
+            }
+
             equippedWing = Instantiate(item.equipPrefab, wingPoint);
+            equippedWing.transform.localPosition = Vector3.zero;
+            equippedWing.transform.localRotation = Quaternion.identity;
+            equippedWing.transform.localScale = Vector3.one;
+
             Debug.Log("Kanat takıldı 😎");
         }
     }
