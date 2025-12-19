@@ -4,23 +4,26 @@ public class Player : MonoBehaviour
 {
     public ItemSlot[] slots;
 
-    [Header("Equipment")]
+    [Header("Equip Points")]
     public Transform wingPoint;
+    public Transform handPoint;
+
     private GameObject equippedWing;
+    private GameObject equippedSword;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            UseSlot(0);
-        }
+            UseSlot(0); // Kanat
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            UseSlot(1); // Kılıç
     }
 
     // ================= INVENTORY =================
 
     public void AddItem(Item newItem)
     {
-        // Aynı item varsa stackle
         foreach (ItemSlot slot in slots)
         {
             if (!slot.isEmpty && slot.item == newItem)
@@ -30,7 +33,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        // Boş slot bul
         foreach (ItemSlot slot in slots)
         {
             if (slot.isEmpty)
@@ -52,42 +54,39 @@ public class Player : MonoBehaviour
 
         Item item = slot.item;
 
-        if (item.itemType == ItemType.Equipment)
+        // 🔥 SLOT 0 = KANAT
+        if (index == 0)
         {
-            ToggleEquip(item);
+            ToggleEquip(ref equippedWing, wingPoint, item.equipPrefab);
+        }
+        // 🔥 SLOT 1 = KILIÇ
+        else if (index == 1)
+        {
+            ToggleEquip(ref equippedSword, handPoint, item.equipPrefab);
         }
     }
 
-    // ================= EQUIP =================
+    // ================= EQUIP CORE =================
 
-    void ToggleEquip(Item item)
+    void ToggleEquip(ref GameObject equippedObj, Transform point, GameObject prefab)
     {
-        if (wingPoint == null)
+        if (point == null || prefab == null)
         {
-            Debug.LogError("WingPoint atanmadı!");
+            Debug.LogError("Equip point veya prefab eksik!");
             return;
         }
 
-        if (equippedWing != null)
+        if (equippedObj != null)
         {
-            Destroy(equippedWing);
-            equippedWing = null;
-            Debug.Log("Kanat çıkarıldı 🪽");
+            Destroy(equippedObj);
+            equippedObj = null;
         }
         else
         {
-            if (item.equipPrefab == null)
-            {
-                Debug.LogError("Equip Prefab boş!");
-                return;
-            }
-
-            equippedWing = Instantiate(item.equipPrefab, wingPoint);
-            equippedWing.transform.localPosition = Vector3.zero;
-            equippedWing.transform.localRotation = Quaternion.identity;
-            equippedWing.transform.localScale = Vector3.one;
-
-            Debug.Log("Kanat takıldı 😎");
+            equippedObj = Instantiate(prefab, point);
+            equippedObj.transform.localPosition = Vector3.zero;
+            equippedObj.transform.localRotation = Quaternion.identity;
+            equippedObj.transform.localScale = Vector3.one;
         }
     }
 }
