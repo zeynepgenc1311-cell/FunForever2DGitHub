@@ -1,24 +1,62 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
     public Item item;
-    public bool isEmpty;
     public Image itemImage;
+    public Text countText;
 
-    void Start()
+    public bool isEmpty = true;
+    private int count = 0;
+
+    void Awake()
     {
-        isEmpty = true;
-        itemImage.enabled = false;
+        ClearSlot();
     }
-    public void SetItem(Item i)
+
+    public void SetItem(Item newItem)
     {
-        item = i;
+        item = newItem;
         isEmpty = false;
-        itemImage.enabled = true;
+        count = 1;
+
         itemImage.sprite = item.itemSprite;
+        itemImage.enabled = true;
+
+        UpdateCount();
+    }
+
+    public void AddItem()
+    {
+        count++;
+        UpdateCount();
+    }
+
+    public void RemoveOne()
+    {
+        count--;
+        UpdateCount();
+
+        if (count <= 0)
+        {
+            ClearSlot();
+        }
+    }
+
+    void UpdateCount()
+    {
+        countText.enabled = count > 1;
+        countText.text = count.ToString();
+    }
+
+    void ClearSlot()
+    {
+        item = null;
+        isEmpty = true;
+        count = 0;
+
+        itemImage.enabled = false;
+        countText.enabled = false;
     }
 }
