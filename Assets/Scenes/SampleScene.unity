@@ -1823,7 +1823,7 @@ Transform:
   m_GameObject: {fileID: 1221293437}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.14, y: -1.02912, z: -1.8069396}
+  m_LocalPosition: {x: -1.235, y: -1.02912, z: -1.8069396}
   m_LocalScale: {x: 0.025470702, y: 0.025470702, z: 0.025470702}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2358,7 +2358,7 @@ Transform:
   m_GameObject: {fileID: 1845009721}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 57.1, y: 41.9, z: 70.69862}
+  m_LocalPosition: {x: 60, y: 41.9, z: 70.69862}
   m_LocalScale: {x: 39.260796, y: 39.260796, z: 39.260796}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2770,6 +2770,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WyvernHornBow
       objectReference: {fileID: 0}
+    - target: {fileID: 7380625738923463729, guid: f3462ecf60c71194abd8d381df65c532, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8823219675700969560, guid: f3462ecf60c71194abd8d381df65c532, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -2854,7 +2858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8268347800991494315, guid: 405eba7284ed08142aa0095a9a7131b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.31
+      value: -1.291
       objectReference: {fileID: 0}
     - target: {fileID: 8268347800991494315, guid: 405eba7284ed08142aa0095a9a7131b1, type: 3}
       propertyPath: m_LocalPosition.y

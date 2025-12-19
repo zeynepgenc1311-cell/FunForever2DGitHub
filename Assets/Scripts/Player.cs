@@ -46,25 +46,29 @@ public class Player : MonoBehaviour
     }
 
     void UseSlot(int index)
+{
+    if (index < 0 || index >= slots.Length) return;
+
+    ItemSlot slot = slots[index];
+    if (slot.isEmpty || slot.item == null) return;
+
+    Item item = slot.item;
+
+    if (item.itemType != ItemType.Equipment) return;
+
+    // 🔥 ITEM KARAR VERİYOR
+    switch (item.equipSlot)
     {
-        if (index < 0 || index >= slots.Length) return;
-
-        ItemSlot slot = slots[index];
-        if (slot.isEmpty || slot.item == null) return;
-
-        Item item = slot.item;
-
-        // 🔥 SLOT 0 = KANAT
-        if (index == 0)
-        {
+        case EquipSlot.Wing:
             ToggleEquip(ref equippedWing, wingPoint, item.equipPrefab);
-        }
-        // 🔥 SLOT 1 = KILIÇ
-        else if (index == 1)
-        {
+            break;
+
+        case EquipSlot.Weapon:
             ToggleEquip(ref equippedSword, handPoint, item.equipPrefab);
-        }
+            break;
     }
+}
+
 
     // ================= EQUIP CORE =================
 

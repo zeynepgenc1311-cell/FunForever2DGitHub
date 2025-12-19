@@ -6,6 +6,12 @@ public enum ItemType
     Equipment
 }
 
+public enum EquipSlot
+{
+    Wing,
+    Weapon
+}
+
 [CreateAssetMenu(menuName = "Inventory/Item")]
 public class Item : ScriptableObject
 {
@@ -13,6 +19,8 @@ public class Item : ScriptableObject
     public Sprite itemSprite;
     public ItemType itemType;
 
-    // Equipment için
+    // 🔥 ITEM NEREYE TAKILACAĞINI BİLİYOR
+    public EquipSlot equipSlot;
+
     public GameObject equipPrefab;
 }
