@@ -1425,7 +1425,7 @@ MonoBehaviour:
   coinText: {fileID: 1898651451}
   gemText: {fileID: 169249464}
   rainbowCoinText: {fileID: 1608003758}
-  resetOnStart: 1
+  resetOnStart: 0
 --- !u!4 &282383465
 Transform:
   m_ObjectHideFlags: 0
