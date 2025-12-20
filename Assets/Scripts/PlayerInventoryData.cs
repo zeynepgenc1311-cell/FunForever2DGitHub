@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class PlayerInventoryData
+public class PlayerInventoryData : MonoBehaviour
 {
-    public List<ItemSlot> inventorySlots = new List<ItemSlot>();
+    public List<ItemSlot> inventorySlots = new();
 }
