@@ -1425,7 +1425,7 @@ MonoBehaviour:
   coinText: {fileID: 1898651451}
   gemText: {fileID: 169249464}
   rainbowCoinText: {fileID: 1608003758}
-  resetOnStart: 0
+  resetOnStart: 1
 --- !u!4 &282383465
 Transform:
   m_ObjectHideFlags: 0
@@ -4055,6 +4055,8 @@ GameObject:
   - component: {fileID: 1221293442}
   - component: {fileID: 1221293441}
   - component: {fileID: 1221293444}
+  - component: {fileID: 1221293445}
+  - component: {fileID: 1221293446}
   m_Layer: 0
   m_Name: "tunu\u015F"
   m_TagString: Player
@@ -4263,6 +4265,44 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1221293445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221293437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfccacf2ab1500846a168b3862b2a692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventory:
+    inventorySlots:
+    - {fileID: 785811634}
+    - {fileID: 377463768}
+    - {fileID: 434048056}
+    - {fileID: 1337756171}
+    - {fileID: 467748436}
+--- !u!114 &1221293446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221293437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a7a5a43df8d144185d07a0456e9196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiList:
+  - {fileID: 785811634}
+  - {fileID: 377463768}
+  - {fileID: 434048056}
+  - {fileID: 1337756171}
+  - {fileID: 467748436}
+  userInventory: {fileID: 0}
 --- !u!1 &1259046583
 GameObject:
   m_ObjectHideFlags: 0
