@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa72c0e8f085ad4eba8a1d0200c7f20, type: 3}
+  m_Name: hand 2
+  m_EditorClassIdentifier: 
+  itemName: katana
+  itemSprite: {fileID: 21300000, guid: f2a6caf7b6afd7b4095cfac985b5869c, type: 3}
+  itemType: 1
+  itemPrice: 150
+  canStackable: 0
+  costType: 1
+  equipSlot: 1
+  equipPrefab: {fileID: 1636208399522356238, guid: 0d78ad96d58dada489e1df7a78b5ac7e, type: 3}

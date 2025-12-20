@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa72c0e8f085ad4eba8a1d0200c7f20, type: 3}
+  m_Name: wing 9
+  m_EditorClassIdentifier: 
+  itemName: wings
+  itemSprite: {fileID: 21300000, guid: 99815dac76785eb4ba1488d54f298fca, type: 3}
+  itemType: 1
+  itemPrice: 500
+  canStackable: 0
+  costType: 1
+  equipSlot: 0
+  equipPrefab: {fileID: 4372675919880394607, guid: 440a8a9782455f6438e757647e23af3c, type: 3}
