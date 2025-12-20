@@ -10,8 +10,8 @@ public class CurrencyUI : MonoBehaviour
 
     void Update()
     {
-        coinText.text = CurrencyManager.Instance.coin.ToString();
-        gemText.text = CurrencyManager.Instance.gem.ToString();
-        rainbowCoinText.text = CurrencyManager.Instance.rainbowCoin.ToString();
+        coinText.text = CurrencyManager.Instance.coins.ToString();
+        gemText.text = CurrencyManager.Instance.gems.ToString();
+        rainbowCoinText.text = CurrencyManager.Instance.rainbowCoins.ToString();
     }
 }

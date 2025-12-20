@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
 
         Debug.Log("Envanter dolu 😅");
     }
+    
 
     // ================= HOTBAR =================
 

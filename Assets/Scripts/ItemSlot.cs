@@ -6,9 +6,16 @@ public class ItemSlot : MonoBehaviour
     public Item item;
     public Image itemImage;
     public Text countText;
+    public Text itemCountText; 
+    
 
     public bool isEmpty = true;
     private int count = 0;
+    public int itemCount
+{
+    get { return count; }
+}
+
 
     void Awake()
     {
