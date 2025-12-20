@@ -3517,56 +3517,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922482996}
   m_CullTransparentMesh: 1
---- !u!1 &958234651
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 958234653}
-  - component: {fileID: 958234652}
-  m_Layer: 0
-  m_Name: PlayerInventoryData
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &958234652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 958234651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 025bf849547939548ba3f6bb7b1d523d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventorySlots:
-  - {fileID: 785811634}
-  - {fileID: 377463768}
-  - {fileID: 434048056}
-  - {fileID: 1337756171}
-  - {fileID: 467748436}
---- !u!4 &958234653
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 958234651}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1002450880
 GameObject:
   m_ObjectHideFlags: 0
@@ -4327,7 +4277,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfccacf2ab1500846a168b3862b2a692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventory: {fileID: 0}
+  playerInventory:
+    inventorySlots:
+    - {fileID: 785811634}
+    - {fileID: 377463768}
+    - {fileID: 434048056}
+    - {fileID: 1337756171}
+    - {fileID: 467748436}
 --- !u!114 &1221293446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4346,7 +4302,7 @@ MonoBehaviour:
   - {fileID: 434048056}
   - {fileID: 1337756171}
   - {fileID: 467748436}
-  userInventory: {fileID: 1221293445}
+  userInventory: {fileID: 0}
 --- !u!1 &1259046583
 GameObject:
   m_ObjectHideFlags: 0
@@ -8259,4 +8215,3 @@ SceneRoots:
   - {fileID: 1764625401}
   - {fileID: 282383465}
   - {fileID: 1885219093}
-  - {fileID: 958234653}
