@@ -15,5 +15,7 @@ MonoBehaviour:
   itemName: asa
   itemSprite: {fileID: 21300000, guid: f2495f0f41bd1d34a80b843563e16fae, type: 3}
   itemType: 1
+  itemPrice: 150
+  canStackable: 0
   equipSlot: 0
   equipPrefab: {fileID: 9121937958296346374, guid: e54eb7e94fb7fd543bce08ded1ae5a6a, type: 3}

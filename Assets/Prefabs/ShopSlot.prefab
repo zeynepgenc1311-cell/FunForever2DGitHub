@@ -553,3 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17dcd772cd669e24197f7cf916310abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotIcon: {fileID: 8796051355064335244}
+  priceText: {fileID: 604663557002171416}
+  slotButton: {fileID: 9096777940999163929}
+  currentItem: {fileID: 0}

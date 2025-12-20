@@ -15,5 +15,7 @@ MonoBehaviour:
   itemName: "z\u0131rh"
   itemSprite: {fileID: 21300000, guid: e29f293938fc0494d87d11a7532e32ea, type: 3}
   itemType: 1
+  itemPrice: 150
+  canStackable: 0
   equipSlot: 4
   equipPrefab: {fileID: 8956931670524885689, guid: 8ed96ee3d4478f04eba81a50066e78dd, type: 3}

@@ -16,7 +16,7 @@ public class ShopSlot : MonoBehaviour
     {
         slotButton.onClick.AddListener(() =>
         {
-            ShopManager.Instance.MarketRequest(currentItem, 1);
+            ClothesShopManager.Instance.MarketRequest(currentItem, 1);
         });
         Initialize(currentItem);
     }
