@@ -3,16 +3,21 @@ using UnityEngine;
 public class FishermanTrigger : MonoBehaviour
 {
     public GameObject fishermanPanel;
+    private bool canOpen = true;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && canOpen)
+        {
             fishermanPanel.SetActive(true);
+            canOpen = false;
+        }
     }
 
-    private void OnTriggerExit(Collider other)
+    // bunu CLOSE BUTTON çağıracak
+    public void ClosePanel()
     {
-        if (other.CompareTag("Player"))
-            fishermanPanel.SetActive(false);
+        fishermanPanel.SetActive(false);
+        canOpen = true;
     }
 }
