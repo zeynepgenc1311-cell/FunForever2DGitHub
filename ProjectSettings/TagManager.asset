@@ -50,3 +50,15 @@ TagManager:
   - name: Layer 3
     uniqueID: 4189426099
     locked: 0
+  - name: Ground
+    uniqueID: 2248443411
+    locked: 0
+  - name: Wings
+    uniqueID: 3596213583
+    locked: 0
+  - name: Player
+    uniqueID: 4127647077
+    locked: 0
+  - name: Clothes
+    uniqueID: 2389583225
+    locked: 0
