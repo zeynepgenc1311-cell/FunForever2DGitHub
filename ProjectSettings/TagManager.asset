@@ -56,9 +56,6 @@ TagManager:
   - name: bina
     uniqueID: 3210364065
     locked: 0
-  - name: bina 2
-    uniqueID: 959972663
-    locked: 0
   - name: Wings
     uniqueID: 3596213583
     locked: 0
@@ -67,4 +64,7 @@ TagManager:
     locked: 0
   - name: Clothes
     uniqueID: 2389583225
+    locked: 0
+  - name: bina 2
+    uniqueID: 959972663
     locked: 0
