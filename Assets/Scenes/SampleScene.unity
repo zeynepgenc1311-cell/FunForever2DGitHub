@@ -1978,9 +1978,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baafd9f4650188049b15ee538b5a5d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 500
-  gems: 500
-  rainbowCoins: 500
+  coins: 1000000000
+  gems: 1000000000
+  rainbowCoins: 1000000000
   coinIcon: {fileID: 21300000, guid: d6401212d500def48983072d8372729e, type: 3}
   gemIcon: {fileID: 21300000, guid: 655efa8382e10c344a38684c4cbdbaa4, type: 3}
   rainbowIcon: {fileID: 21300000, guid: c110506f7c2354e478271febebdb3188, type: 3}
