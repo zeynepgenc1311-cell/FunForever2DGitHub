@@ -63,22 +63,4 @@ public class Inventory : MonoBehaviour
         }
         return false;
     }
-
-    // ==========================================
-    // BU EKLENDİ → OLTA EQUIP
-    // ==========================================
-    public void EquipItem(Item item)
-    {
-        // burda item’e göre tool set ediyoruz
-        if (item.itemType == ItemType.FishingRod)
-        {
-            PlayerToolController.Instance.EquipFishingRod();
-        }
-        else
-        {
-            PlayerToolController.Instance.UnequipTool();
-        }
-
-        Debug.Log("Equip edilen item: " + item.name);
-    }
 }

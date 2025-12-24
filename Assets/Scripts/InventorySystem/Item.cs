@@ -3,20 +3,16 @@ using UnityEngine;
 public enum ItemType
 {
     Consumable,
-    Equipment,
-    FishingRod,
-    Fish
+    Equipment
 }
 
 public enum EquipSlot
 {
-    None,
     Wing,
     Weapon,
     Shield,
     Helmet,
-    Armor,
-    FishingRod
+    Armor
 }
 
 [CreateAssetMenu(menuName = "Inventory/Item")]

@@ -10,9 +10,6 @@ public class InventoryUIController : MonoBehaviour
     [Header("Inventory script referansı")]
     public Inventory userInventory;
 
-    [Header("Balık Tut Butonu (Canvas'taki)")]
-    public GameObject fishingButton;
-
     private void Awake()
     {
         // Inventory scripti otomatik atama
@@ -28,12 +25,6 @@ public class InventoryUIController : MonoBehaviour
         UpdateUI();
     }
 
-    private void Update()
-    {
-        UpdateFishingButton();
-    }
-
-    // UI slotlarını güncelle
     public void UpdateUI()
     {
         if (userInventory == null)
@@ -78,25 +69,5 @@ public class InventoryUIController : MonoBehaviour
                 uiSlot.itemCountText.gameObject.SetActive(false);
             }
         }
-    }
-
-    // ==========================================
-    // OLTA EQUIP EDİLDİ Mİ KONTROLÜ
-    // ==========================================
-    private void UpdateFishingButton()
-    {
-        if (fishingButton == null) return;
-
-        // sadece oltayı equip ettiyse buton aktif
-        bool hasRod = PlayerToolController.Instance != null &&
-                      PlayerToolController.Instance.HasFishingRod();
-
-        fishingButton.SetActive(hasRod);
-    }
-
-    // Butona basınca çağrılacak
-    public void OnFishingButtonPressed()
-    {
-        FishingManager.Instance.CastRod();
     }
 }

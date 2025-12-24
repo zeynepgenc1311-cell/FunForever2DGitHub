@@ -6501,7 +6501,6 @@ MonoBehaviour:
   countText: {fileID: 93443011}
   itemCountText: {fileID: 384920569}
   isEmpty: 0
-  slotButton: {fileID: 1156417899}
 --- !u!1 &380088893
 GameObject:
   m_ObjectHideFlags: 0
@@ -7768,7 +7767,6 @@ MonoBehaviour:
   countText: {fileID: 209115727}
   itemCountText: {fileID: 533517955}
   isEmpty: 0
-  slotButton: {fileID: 1521446647}
 --- !u!1 &454755043
 GameObject:
   m_ObjectHideFlags: 0
@@ -8126,7 +8124,6 @@ MonoBehaviour:
   countText: {fileID: 93136975}
   itemCountText: {fileID: 1357180950}
   isEmpty: 0
-  slotButton: {fileID: 1808584475}
 --- !u!1 &489144610
 GameObject:
   m_ObjectHideFlags: 0
@@ -11336,7 +11333,6 @@ MonoBehaviour:
   countText: {fileID: 1593742952}
   itemCountText: {fileID: 1633836399}
   isEmpty: 0
-  slotButton: {fileID: 1238645491}
 --- !u!1 &793672780
 GameObject:
   m_ObjectHideFlags: 0
@@ -17422,7 +17418,6 @@ GameObject:
   - component: {fileID: 1221293444}
   - component: {fileID: 1221293445}
   - component: {fileID: 1221293446}
-  - component: {fileID: 1221293447}
   - component: {fileID: 1221293448}
   m_Layer: 0
   m_Name: "tunu\u015F"
@@ -17669,23 +17664,6 @@ MonoBehaviour:
   - {fileID: 1337756171}
   - {fileID: 467748436}
   userInventory: {fileID: 1221293445}
-  fishingButton: {fileID: 838868837}
---- !u!114 &1221293447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221293437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0476be3e021b9284d840c79134f01972, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTool: 0
-  fishingRodPrefab: {fileID: 4862636490460312780, guid: 6327c10f7d2f82a41ba9536772298a33,
-    type: 3}
-  hand: {fileID: 1845009722}
 --- !u!114 &1221293448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19847,7 +19825,6 @@ MonoBehaviour:
   countText: {fileID: 53019431}
   itemCountText: {fileID: 1684618531}
   isEmpty: 0
-  slotButton: {fileID: 6222084}
 --- !u!1 &1340763166
 GameObject:
   m_ObjectHideFlags: 0
