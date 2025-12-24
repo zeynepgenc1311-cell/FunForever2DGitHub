@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa72c0e8f085ad4eba8a1d0200c7f20, type: 3}
+  m_Name: Fish 1
+  m_EditorClassIdentifier: 
+  itemName: seastar
+  itemSprite: {fileID: 21300000, guid: 22d8eaa8cfba167499ae2629a75cf6f3, type: 3}
+  itemType: 0
+  itemPrice: 75
+  canStackable: 1
+  costType: 0
+  equipSlot: 2
+  equipPrefab: {fileID: 2223419480302471416, guid: abe393619933fce478f2ed31257dc0fb,
+    type: 3}

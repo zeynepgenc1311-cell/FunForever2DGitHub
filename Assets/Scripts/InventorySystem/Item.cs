@@ -3,11 +3,14 @@ using UnityEngine;
 public enum ItemType
 {
     Consumable,
-    Equipment
+    Equipment,
+    FishingRod,
+    Fish
 }
 
 public enum EquipSlot
 {
+    None,
     Wing,
     Weapon,
     Shield,
