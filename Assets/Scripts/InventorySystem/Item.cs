@@ -15,7 +15,8 @@ public enum EquipSlot
     Weapon,
     Shield,
     Helmet,
-    Armor
+    Armor,
+    FishingRod
 }
 
 [CreateAssetMenu(menuName = "Inventory/Item")]

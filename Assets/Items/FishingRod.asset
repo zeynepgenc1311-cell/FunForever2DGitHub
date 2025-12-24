@@ -18,6 +18,6 @@ MonoBehaviour:
   itemPrice: 200
   canStackable: 0
   costType: 0
-  equipSlot: 2
+  equipSlot: 6
   equipPrefab: {fileID: 4862636490460312780, guid: 6327c10f7d2f82a41ba9536772298a33,
     type: 3}

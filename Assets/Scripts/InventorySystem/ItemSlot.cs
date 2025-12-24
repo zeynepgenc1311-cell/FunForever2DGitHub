@@ -7,19 +7,24 @@ public class ItemSlot : MonoBehaviour
     public Image itemImage;
     public Text countText;
     public Text itemCountText; 
-    
 
     public bool isEmpty = true;
     private int count = 0;
     public int itemCount
-{
-    get { return count; }
-}
+    {
+        get { return count; }
+    }
 
+    public Button slotButton;
 
     void Awake()
     {
         ClearSlot();
+
+        if (slotButton == null)
+            slotButton = GetComponent<Button>();
+
+        slotButton.onClick.AddListener(OnSlotClicked);
     }
 
     public void SetItem(Item newItem)
@@ -65,5 +70,23 @@ public class ItemSlot : MonoBehaviour
 
         itemImage.enabled = false;
         countText.enabled = false;
+    }
+
+    // 🔥 Buraya ekledik: slot tıklandığında equip
+    void OnSlotClicked()
+    {
+        if (item == null) return;
+
+        switch (item.itemType)
+        {
+            case ItemType.FishingRod:
+                PlayerToolController.Instance.EquipFishingRod();
+                break;
+
+            case ItemType.Equipment:
+                // Diğer ekipmanlar için placeholder
+                // PlayerToolController.Instance.EquipEquipment(item);
+                break;
+        }
     }
 }
