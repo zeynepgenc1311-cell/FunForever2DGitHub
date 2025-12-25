@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: FishingRod
   itemSprite: {fileID: 21300000, guid: 8cbde92ba2bc69e479579a1eaef4c35c, type: 3}
-  itemType: 2
+  itemType: 1
   itemPrice: 200
   canStackable: 0
   costType: 0
-  equipSlot: 6
+  equipSlot: 1
   equipPrefab: {fileID: 4862636490460312780, guid: 6327c10f7d2f82a41ba9536772298a33,
     type: 3}
