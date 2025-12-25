@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public Transform shieldPoint;
     public Transform helmetPoint;
     public Transform armorPoint;
+    public Transform headPoint;
+
 
     private GameObject equippedWing;
     private GameObject equippedWeapon;

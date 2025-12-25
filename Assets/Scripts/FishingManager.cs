@@ -1,11 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum FishingState
 {
-    Idle,        // hiçbir şey yok
-    WaitingFish, // balık bekleniyor
-    CanReel,     // ❓ çıktı
+    Idle,
+    WaitingFish,
+    CanReel,
     MiniGame
 }
 
@@ -19,12 +20,21 @@ public class FishingManager : MonoBehaviour
     [Header("Balık Listesi")]
     public Item[] fishItems;
 
+    [Header("Baloncuk Prefab")]
+    public GameObject fishBubblePrefab;
+
     [Header("UI")]
     public GameObject questionMark;
+
+    [Header("Olta Objeleri")]
+    public GameObject fishingRodInHand;
+    public GameObject fishingRodOnBack;
 
     public Player player;
 
     public FishingState state = FishingState.Idle;
+
+    private GameObject currentFishVisual;
 
     private void Awake()
     {
@@ -32,24 +42,19 @@ public class FishingManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    // ===============================
-    // BUTON BURAYI ÇAĞIRACAK
-    // ===============================
     public void OnFishingButton()
     {
-        Debug.Log("🟡 Fishing button basıldı");
+        if (player == null)
+        {
+            Debug.LogError("❌ Player referansı yok");
+            return;
+        }
 
-    if (player == null)
-    {
-        Debug.LogError("❌ Player referansı yok");
-        return;
-    }
-
-    if (!player.HasFishingRod())
-    {
-        Debug.Log("❌ Olta equip değil");
-        return;
-    }
+        if (!player.HasFishingRod())
+        {
+            Debug.Log("❌ Olta equip değil");
+            return;
+        }
 
         if (!PlayerFishing.Instance.CanFish())
         {
@@ -68,9 +73,6 @@ public class FishingManager : MonoBehaviour
         }
     }
 
-    // ===============================
-    // BALIK BEKLEME
-    // ===============================
     IEnumerator WaitForFish()
     {
         state = FishingState.WaitingFish;
@@ -80,7 +82,6 @@ public class FishingManager : MonoBehaviour
         state = FishingState.CanReel;
         questionMark.SetActive(true);
 
-        // refleks süresi
         yield return new WaitForSeconds(2f);
 
         if (state == FishingState.CanReel)
@@ -90,13 +91,13 @@ public class FishingManager : MonoBehaviour
         }
     }
 
-    // ===============================
-    // MINIGAME BAŞLAT
-    // ===============================
     void StartMiniGame()
     {
         state = FishingState.MiniGame;
         questionMark.SetActive(false);
+
+        // Olta elimizden kalkıyor
+        fishingRodInHand.SetActive(false);
 
         miniGameUI.SetActive(true);
         MiniGameController.Instance.StartMiniGame();
@@ -115,6 +116,26 @@ public class FishingManager : MonoBehaviour
             Item fish = fishItems[Random.Range(0, fishItems.Length)];
             Inventory.Instance.AddItem(fish, 1);
             Debug.Log("🐟 Balık yakalandı: " + fish.name);
+
+            // Balık kafanın üstünde spawn
+            currentFishVisual = Instantiate(fish.equipPrefab);
+            currentFishVisual.transform.SetParent(player.headPoint);
+            currentFishVisual.transform.localPosition = new Vector3(0, 0.5f, 0);
+            currentFishVisual.transform.localRotation = Quaternion.identity;
+            currentFishVisual.transform.localScale = Vector3.one * 0.5f;
+
+            // Baloncuk spawn
+            if (fishBubblePrefab != null)
+            {
+                GameObject bubble = Instantiate(fishBubblePrefab, currentFishVisual.transform);
+                bubble.transform.localPosition = new Vector3(0, 0.5f, 0);
+                bubble.transform.localRotation = Quaternion.identity;
+                bubble.transform.localScale = Vector3.one;
+
+                FishBubble bubbleScript = bubble.GetComponent<FishBubble>();
+                if (bubbleScript != null)
+                    bubbleScript.Setup(fish);
+            }
         }
         else
         {
@@ -124,21 +145,22 @@ public class FishingManager : MonoBehaviour
         ResetFishing();
     }
 
-    void ShowQuestionMark()
-{
-    if (questionMark != null)
-        questionMark.SetActive(true);
-}
-    void HideQuestionMark()
-{
-    if (questionMark != null)
-        questionMark.SetActive(false);
-}
-
+    // Ekrana tıklayınca olta geri gelir, balık kafada kalır
+    public void OnScreenTap()
+    {
+        if (currentFishVisual != null)
+        {
+            fishingRodInHand.SetActive(true);
+            Destroy(currentFishVisual, 0.1f);
+        }
+    }
 
     void ResetFishing()
     {
         state = FishingState.Idle;
         questionMark.SetActive(false);
+
+        if (fishingRodInHand != null)
+            fishingRodInHand.SetActive(true);
     }
 }

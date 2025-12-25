@@ -14,6 +14,10 @@ public class MiniGameController : MonoBehaviour
     [Header("Progress Bar")]
     public Image progressBar;
 
+    [Header("Progress Bar Ayarları (Dynamic)")]
+    public float minProgressLoseSpeed = 0.05f; // bar az doluyken düşme hızı
+    public float maxProgressLoseSpeed = 0.3f;  // bar doldukça düşme hızı
+
     [Header("Ayarlar")]
     public float sliderUpSpeed = 0.6f;
     public float sliderDownSpeed = 0.6f;
@@ -22,11 +26,12 @@ public class MiniGameController : MonoBehaviour
     public float targetZoneSize = 0.2f;    // genişliği (0–1 arası)
 
     public float progressFillSpeed = 0.4f;
-    public float progressLoseSpeed = 0.3f;
+    
 
     private bool holdingButton;
     public bool finished;
     public bool success;
+    private bool barHasMoved = false; // bar bir kere arttı mı
 
     float targetCenter01;
 
@@ -39,6 +44,7 @@ public class MiniGameController : MonoBehaviour
     {
         finished = false;
         success = false;
+        barHasMoved = false;
 
         slider.minValue = 0f;
         slider.maxValue = 1f;
@@ -91,24 +97,24 @@ public class MiniGameController : MonoBehaviour
     void CheckProgress()
 {
     float distance = Mathf.Abs(slider.value - targetCenter01);
-
     float perfectZone = targetZoneSize * 0.4f;
-    float safeZone = targetZoneSize * 1.2f;
 
     if (distance <= perfectZone)
     {
-        // hedefin içi → hızlı dol
+        // slider target zone içindeyse bar artsın
         progressBar.fillAmount += progressFillSpeed * Time.deltaTime;
-    }
-    else if (distance <= safeZone)
-    {
-        // hedefe yakın → BAR SABİT
-        // hiçbir şey yapma
+
+        if (!barHasMoved && progressBar.fillAmount > 0f)
+            barHasMoved = true;
     }
     else
     {
-        // çok kaçtı → yavaş azalsın
-        progressBar.fillAmount -= progressLoseSpeed * 0.2f * Time.deltaTime;
+        // slider target zone dışında → bar düşsün
+        if (progressBar.fillAmount > 0f)
+        {
+            float dynamicLoseSpeed = Mathf.Lerp(minProgressLoseSpeed, maxProgressLoseSpeed, progressBar.fillAmount);
+            progressBar.fillAmount -= dynamicLoseSpeed * Time.deltaTime;
+        }
     }
 
     progressBar.fillAmount = Mathf.Clamp01(progressBar.fillAmount);
@@ -118,8 +124,14 @@ public class MiniGameController : MonoBehaviour
         success = true;
         finished = true;
     }
-}
 
+    if (progressBar.fillAmount <= 0f && barHasMoved)
+    {
+        success = false;
+        finished = true;
+        Debug.Log("💔 Balık kaçtı (bar tekrar sıfıra düştü)");
+    }
+}
 
 
     // 🎯 BUTON EVENTLERİ

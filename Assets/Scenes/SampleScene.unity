@@ -8733,7 +8733,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5e8f0c43a8eb54f4b9abf8bd5a6e1328, type: 2}
   - {fileID: 11400000, guid: 2b5f60daa6dd12244a5db6d6e01af07f, type: 2}
   - {fileID: 11400000, guid: b1a5d92d8b557c648a13687e29806377, type: 2}
+  fishBubblePrefab: {fileID: 0}
   questionMark: {fileID: 1889793216}
+  fishingRodInHand: {fileID: 4862636490460312780, guid: 6327c10f7d2f82a41ba9536772298a33,
+    type: 3}
+  fishingRodOnBack: {fileID: 0}
   player: {fileID: 1221293440}
   state: 0
 --- !u!114 &564628213
@@ -16811,6 +16815,7 @@ Transform:
   - {fileID: 1845009722}
   - {fileID: 72705456}
   - {fileID: 2007453903}
+  - {fileID: 2035771511}
   - {fileID: 124725177}
   - {fileID: 1889793218}
   m_Father: {fileID: 1747438876}
@@ -16838,6 +16843,7 @@ MonoBehaviour:
   shieldPoint: {fileID: 72705456}
   helmetPoint: {fileID: 2007453903}
   armorPoint: {fileID: 124725177}
+  headPoint: {fileID: 2035771511}
 --- !u!114 &1221293441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23718,12 +23724,13 @@ MonoBehaviour:
   slider: {fileID: 1878301819}
   targetZone: {fileID: 405072863}
   progressBar: {fileID: 329204592}
+  minProgressLoseSpeed: 0.02
+  maxProgressLoseSpeed: 0.15
   sliderUpSpeed: 0.6
   sliderDownSpeed: 0.4
   targetMoveSpeed01: 1.5
   targetZoneSize: 0.2
-  progressFillSpeed: 0.4
-  progressLoseSpeed: 0.6
+  progressFillSpeed: 0.35
   finished: 0
   success: 0
 --- !u!1 &1743775370
@@ -28652,6 +28659,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031205116}
   m_CullTransparentMesh: 1
+--- !u!1 &2035771510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2035771511}
+  m_Layer: 0
+  m_Name: HeadPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2035771511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035771510}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1221293439}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2041200075 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4862636490460312780, guid: 6327c10f7d2f82a41ba9536772298a33,
@@ -31874,6 +31912,6 @@ SceneRoots:
   - {fileID: 734526150}
   - {fileID: 1452387069}
   - {fileID: 564628210}
+  - {fileID: 1816407084}
   - {fileID: 993945032}
   - {fileID: 1567451120}
-  - {fileID: 1816407084}
