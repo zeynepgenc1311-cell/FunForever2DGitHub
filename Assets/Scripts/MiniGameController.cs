@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class MiniGameController : MonoBehaviour
 {
@@ -9,47 +8,128 @@ public class MiniGameController : MonoBehaviour
     [Header("Slider")]
     public Slider slider;
 
-    [Header("Target Zone (balığın çıkacağı alan)")]
+    [Header("Target Zone")]
     public RectTransform targetZone;
 
-    [Header("Hız")]
-    public float speed = 2f;
+    [Header("Progress Bar")]
+    public Image progressBar;
 
-    [HideInInspector] public bool finished;
-    [HideInInspector] public bool success;
+    [Header("Ayarlar")]
+    public float sliderUpSpeed = 0.6f;
+    public float sliderDownSpeed = 0.6f;
+
+    public float targetMoveSpeed01 = 1.2f; // target zone hızı
+    public float targetZoneSize = 0.2f;    // genişliği (0–1 arası)
+
+    public float progressFillSpeed = 0.4f;
+    public float progressLoseSpeed = 0.3f;
+
+    private bool holdingButton;
+    public bool finished;
+    public bool success;
+
+    float targetCenter01;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        Instance = this;
     }
 
     public void StartMiniGame()
     {
         finished = false;
         success = false;
-        slider.value = 0;
-        StartCoroutine(MoveSlider());
+
+        slider.minValue = 0f;
+        slider.maxValue = 1f;
+        slider.value = 0f;
+
+        progressBar.fillAmount = 0f;
+        holdingButton = false;
     }
 
-    IEnumerator MoveSlider()
+    void Update()
     {
-        while (!finished)
-        {
-            slider.value = Mathf.PingPong(Time.time * speed, 1f);
+        if (finished) return;
 
-            // Space tuşuna basınca kontrol
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                float sliderPos = slider.value;
-                float min = targetZone.anchorMin.x;
-                float max = targetZone.anchorMax.x;
+        MoveTargetZone();
+        MoveSlider();
+        CheckProgress();
+    }
 
-                success = sliderPos >= min && sliderPos <= max;
-                finished = true;
-            }
+    // 🎯 SLIDER BUTONLA İLERLER GERİ GELİR
+    void MoveSlider()
+    {
+        if (holdingButton)
+            slider.value += sliderUpSpeed * Time.deltaTime;
+        else
+            slider.value -= sliderDownSpeed * Time.deltaTime;
 
-            yield return null;
-        }
+        slider.value = Mathf.Clamp01(slider.value);
+    }
+
+    // 🎯 TARGET ZONE 0–1 ARASI SAĞA SOLA GİDER
+    void MoveTargetZone()
+    {
+        targetCenter01 = (Mathf.Sin(Time.time * targetMoveSpeed01) + 1f) / 2f;
+
+        float sliderWidth = slider.fillRect.rect.width;
+
+        float xPos = Mathf.Lerp(
+            -sliderWidth / 2f,
+            sliderWidth / 2f,
+            targetCenter01
+        );
+
+        targetZone.anchoredPosition = new Vector2(
+            xPos,
+            targetZone.anchoredPosition.y
+        );
+    }
+
+    // 🎯 PROGRESS DOLMA KONTROLÜ
+    void CheckProgress()
+{
+    float distance = Mathf.Abs(slider.value - targetCenter01);
+
+    float perfectZone = targetZoneSize * 0.4f;
+    float safeZone = targetZoneSize * 1.2f;
+
+    if (distance <= perfectZone)
+    {
+        // hedefin içi → hızlı dol
+        progressBar.fillAmount += progressFillSpeed * Time.deltaTime;
+    }
+    else if (distance <= safeZone)
+    {
+        // hedefe yakın → BAR SABİT
+        // hiçbir şey yapma
+    }
+    else
+    {
+        // çok kaçtı → yavaş azalsın
+        progressBar.fillAmount -= progressLoseSpeed * 0.2f * Time.deltaTime;
+    }
+
+    progressBar.fillAmount = Mathf.Clamp01(progressBar.fillAmount);
+
+    if (progressBar.fillAmount >= 1f)
+    {
+        success = true;
+        finished = true;
+    }
+}
+
+
+
+    // 🎯 BUTON EVENTLERİ
+    public void ButtonDown()
+    {
+        holdingButton = true;
+    }
+
+    public void ButtonUp()
+    {
+        holdingButton = false;
     }
 }

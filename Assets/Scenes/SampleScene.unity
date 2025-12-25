@@ -3336,7 +3336,7 @@ RectTransform:
   m_Father: {fileID: 1563079735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5292,7 +5292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00054932, y: 31.3785}
+  m_AnchoredPosition: {x: -0.00054932, y: 62}
   m_SizeDelta: {x: 323.12, y: 24.8942}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &329204592
@@ -5308,7 +5308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.03592813, g: 1, b: 0, a: 0}
+  m_Color: {r: 0.03592813, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6807,7 +6807,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405072862}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6816,8 +6816,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.1371, y: 1.3064}
-  m_SizeDelta: {x: 59.0357, y: 29.2445}
+  m_AnchoredPosition: {x: -7.667901, y: 0.43223}
+  m_SizeDelta: {x: 69.3597, y: 36.2375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &405072864
 MonoBehaviour:
@@ -11714,13 +11714,14 @@ GameObject:
   - component: {fileID: 838868841}
   - component: {fileID: 838868840}
   - component: {fileID: 838868839}
+  - component: {fileID: 838868842}
   m_Layer: 5
   m_Name: FishingButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &838868838
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11783,19 +11784,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 838868840}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 564628211}
-        m_TargetAssemblyTypeName: FishingManager, Assembly-CSharp
-        m_MethodName: CastRod
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &838868840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11834,6 +11823,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838868837}
   m_CullTransparentMesh: 1
+--- !u!114 &838868842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838868837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1737937997}
+          m_TargetAssemblyTypeName: MiniGameController, Assembly-CSharp
+          m_MethodName: ButtonDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1737937997}
+          m_TargetAssemblyTypeName: MiniGameController, Assembly-CSharp
+          m_MethodName: ButtonUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &849898767
 GameObject:
   m_ObjectHideFlags: 0
@@ -13114,8 +13148,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.43214}
+  m_SizeDelta: {x: 0, y: 26.022}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &967575530
 MonoBehaviour:
@@ -20969,7 +21003,7 @@ RectTransform:
   m_Father: {fileID: 253440679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 19.2492, y: 4.4822}
   m_SizeDelta: {x: 94.2465, y: 61.8956}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -23543,15 +23577,15 @@ GameObject:
   - component: {fileID: 1737937996}
   - component: {fileID: 1737937995}
   - component: {fileID: 1737937994}
-  - component: {fileID: 1737937993}
   - component: {fileID: 1737937992}
+  - component: {fileID: 1737937997}
   m_Layer: 5
   m_Name: MiniGamePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1737937992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23566,23 +23600,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1221293439}
   offset: {x: 0, y: 1.5, z: 0}
---- !u!114 &1737937993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737937991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d10b9daa81890e246864885897336a46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 1878301819}
-  targetZone: {fileID: 405072863}
-  speed: 2
-  finished: 0
-  success: 0
 --- !u!114 &1737937994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23633,8 +23650,8 @@ RectTransform:
   m_LocalScale: {x: 0.79169, y: 0.85001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1878301818}
   - {fileID: 329204591}
+  - {fileID: 1878301818}
   m_Father: {fileID: 1059389075}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -23642,6 +23659,29 @@ RectTransform:
   m_AnchoredPosition: {x: 149.84155, y: 145.05756}
   m_SizeDelta: {x: -1596.8785, y: -982.0887}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1737937997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737937991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10b9daa81890e246864885897336a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1878301819}
+  targetZone: {fileID: 405072863}
+  progressBar: {fileID: 329204592}
+  sliderUpSpeed: 0.6
+  sliderDownSpeed: 0.4
+  targetMoveSpeed01: 1.5
+  targetZoneSize: 0.2
+  progressFillSpeed: 0.4
+  progressLoseSpeed: 0.6
+  finished: 0
+  success: 0
 --- !u!1 &1743775370
 GameObject:
   m_ObjectHideFlags: 0
@@ -26154,8 +26194,8 @@ RectTransform:
   m_Children:
   - {fileID: 967575529}
   - {fileID: 1563079735}
-  - {fileID: 253440679}
   - {fileID: 405072863}
+  - {fileID: 253440679}
   m_Father: {fileID: 1737937996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
