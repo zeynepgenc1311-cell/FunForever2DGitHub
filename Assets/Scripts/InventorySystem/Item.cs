@@ -23,6 +23,9 @@ public class Item : ScriptableObject
     public ItemType itemType;
     public int itemPrice = 1;
     public bool canStackable;
+
+    public bool isFishingRod;
+
     public CurrencyType costType;
 
     // 🔥 ITEM NEREYE TAKILACAĞINI BİLİYOR

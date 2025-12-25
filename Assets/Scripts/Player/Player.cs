@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     private GameObject equippedShield;
     private GameObject equippedHelmet;
     private GameObject equippedArmor;
+    private Item equippedWeaponItem;
+
 
     void Update()
     {
@@ -72,6 +74,10 @@ public class Player : MonoBehaviour
 
             case EquipSlot.Weapon:
                 ToggleEquip(ref equippedWeapon, handPoint, item.equipPrefab);
+                if (equippedWeapon != null)
+                equippedWeaponItem = item;
+                else
+                equippedWeaponItem = null;
                 break;
 
             case EquipSlot.Shield:
@@ -111,4 +117,17 @@ public class Player : MonoBehaviour
             equippedObj.transform.localScale = Vector3.one;
         }
     }
+
+    public bool HasFishingRodEquipped()
+{
+    return equippedWeapon != null;
+}
+
+public bool HasFishingRod()
+{
+    Debug.Log("HasFishingRod çağrıldı | equippedWeaponItem: " + equippedWeaponItem);
+    return equippedWeaponItem != null && equippedWeaponItem.isFishingRod;
+}
+
+
 }

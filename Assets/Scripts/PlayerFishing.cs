@@ -7,6 +7,14 @@ public class PlayerFishing : MonoBehaviour
     private bool canFish;
     private bool isFishing;
 
+    public static PlayerFishing Instance;
+
+private void Awake()
+{
+    Instance = this;
+}
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Water"))
@@ -21,32 +29,53 @@ public class PlayerFishing : MonoBehaviour
 
     void Update()
     {
-        if (canFish && !isFishing && Input.GetKeyDown(KeyCode.E))
-        {
-            isFishing = true;
-            animator.SetTrigger("Cast"); // animasyon yok ama trigger hazır
-            FishingManager.Instance.CastRod();
-        }
+        if (Input.GetKeyDown(KeyCode.E))
+            TryStartFishing();
+    }
+
+    // 🔥 HEM BUTON HEM KLAVYE BURAYI KULLANIR
+    public void TryStartFishing()
+    {
+        if (!canFish) return;
+        if (isFishing) return;
+
+        isFishing = true;
+
+        if (animator != null)
+            animator.SetTrigger("Cast");
+
+        FishingManager.Instance.OnFishingButton();
     }
 
     public void SetIdleFishing()
     {
-        animator.SetBool("IsFishing", true);
+        if (animator != null)
+            animator.SetBool("IsFishing", true);
     }
 
     public void StopFishing()
     {
-        animator.SetBool("IsFishing", false);
+        if (animator != null)
+            animator.SetBool("IsFishing", false);
+
         isFishing = false;
     }
 
     public void ReelSuccess()
     {
-        animator.SetTrigger("ReelSuccess");
+        if (animator != null)
+            animator.SetTrigger("ReelSuccess");
     }
 
     public void ReelFail()
     {
-        animator.SetTrigger("ReelFail");
+        if (animator != null)
+            animator.SetTrigger("ReelFail");
     }
+
+    public bool CanFish()
+{
+    return canFish;
+}
+
 }

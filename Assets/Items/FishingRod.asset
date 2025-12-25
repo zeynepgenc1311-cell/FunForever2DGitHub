@@ -17,6 +17,7 @@ MonoBehaviour:
   itemType: 1
   itemPrice: 200
   canStackable: 0
+  isFishingRod: 1
   costType: 0
   equipSlot: 1
   equipPrefab: {fileID: 4862636490460312780, guid: 6327c10f7d2f82a41ba9536772298a33,

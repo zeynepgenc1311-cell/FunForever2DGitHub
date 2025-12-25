@@ -1,15 +1,30 @@
 using System.Collections;
 using UnityEngine;
 
+public enum FishingState
+{
+    Idle,        // hiçbir şey yok
+    WaitingFish, // balık bekleniyor
+    CanReel,     // ❓ çıktı
+    MiniGame
+}
+
 public class FishingManager : MonoBehaviour
 {
     public static FishingManager Instance;
 
-    [Header("Mini Game UI Paneli")]
+    [Header("Mini Game UI")]
     public GameObject miniGameUI;
 
     [Header("Balık Listesi")]
     public Item[] fishItems;
+
+    [Header("UI")]
+    public GameObject questionMark;
+
+    public Player player;
+
+    public FishingState state = FishingState.Idle;
 
     private void Awake()
     {
@@ -17,60 +32,113 @@ public class FishingManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    // ========================================
-    // Bu fonksiyon butondan veya InventoryUIController'dan çağrılır
-    // ========================================
-    public void CastRod()
+    // ===============================
+    // BUTON BURAYI ÇAĞIRACAK
+    // ===============================
+    public void OnFishingButton()
     {
-        // sadece olta varsa
-        if (!PlayerToolController.Instance.HasFishingRod())
+        Debug.Log("🟡 Fishing button basıldı");
+
+    if (player == null)
+    {
+        Debug.LogError("❌ Player referansı yok");
+        return;
+    }
+
+    if (!player.HasFishingRod())
+    {
+        Debug.Log("❌ Olta equip değil");
+        return;
+    }
+
+        if (!PlayerFishing.Instance.CanFish())
+        {
+            Debug.Log("Suyun yanında değilsin");
             return;
-
-        // mouse pozisyonuna raycast
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
-
-        if (!hit.collider) return;
-
-        if (hit.collider.CompareTag("Water"))
-        {
-            StartCoroutine(FishingRoutine());
         }
-        else
+
+        if (state == FishingState.Idle)
         {
-            Debug.Log("Olta yere atıldı, mini game başlamadı");
+            Debug.Log("🎣 OLTA ATILDI");
+            StartCoroutine(WaitForFish());
+        }
+        else if (state == FishingState.CanReel)
+        {
+            StartMiniGame();
         }
     }
 
-    // ========================================
-    // Mini game mantığı
-    // ========================================
-    IEnumerator FishingRoutine()
+    // ===============================
+    // BALIK BEKLEME
+    // ===============================
+    IEnumerator WaitForFish()
     {
-        // balık bekleme süresi (random)
-        yield return new WaitForSeconds(Random.Range(2f, 4f));
+        state = FishingState.WaitingFish;
 
-        if (miniGameUI != null)
-            miniGameUI.SetActive(true);
+        yield return new WaitForSeconds(Random.Range(15f, 20f));
 
+        state = FishingState.CanReel;
+        questionMark.SetActive(true);
+
+        // refleks süresi
+        yield return new WaitForSeconds(2f);
+
+        if (state == FishingState.CanReel)
+        {
+            Debug.Log("⏰ Geç kaldın balık kaçtı");
+            ResetFishing();
+        }
+    }
+
+    // ===============================
+    // MINIGAME BAŞLAT
+    // ===============================
+    void StartMiniGame()
+    {
+        state = FishingState.MiniGame;
+        questionMark.SetActive(false);
+
+        miniGameUI.SetActive(true);
         MiniGameController.Instance.StartMiniGame();
 
-        // mini game bitene kadar bekle
+        StartCoroutine(WaitMiniGameEnd());
+    }
+
+    IEnumerator WaitMiniGameEnd()
+    {
         yield return new WaitUntil(() => MiniGameController.Instance.finished);
 
-        if (miniGameUI != null)
-            miniGameUI.SetActive(false);
+        miniGameUI.SetActive(false);
 
-        // başarılıysa rastgele balık ekle
         if (MiniGameController.Instance.success)
         {
             Item fish = fishItems[Random.Range(0, fishItems.Length)];
             Inventory.Instance.AddItem(fish, 1);
-            Debug.Log("Balık yakalandı: " + fish.name);
+            Debug.Log("🐟 Balık yakalandı: " + fish.name);
         }
         else
         {
-            Debug.Log("Balık kaçtı");
+            Debug.Log("💔 Balık kaçtı");
         }
+
+        ResetFishing();
+    }
+
+    void ShowQuestionMark()
+{
+    if (questionMark != null)
+        questionMark.SetActive(true);
+}
+    void HideQuestionMark()
+{
+    if (questionMark != null)
+        questionMark.SetActive(false);
+}
+
+
+    void ResetFishing()
+    {
+        state = FishingState.Idle;
+        questionMark.SetActive(false);
     }
 }
