@@ -1,40 +1,15 @@
 using Photon.Pun;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OnlineChat : MonoBehaviourPun
 {
-    public TMP_InputField inputField;
-
-    public void SendMessage()
-    {
-        if (string.IsNullOrEmpty(inputField.text)) return;
-
-        photonView.RPC(
-            "RPC_ShowMessage",
-            RpcTarget.All,
-            PhotonNetwork.NickName,
-            inputField.text
-        );
-
-        inputField.text = "";
-    }
+    public Text chatBubbleText;
 
     [PunRPC]
-    void RPC_ShowMessage(string senderName, string message)
+    public void RPC_ShowMessage(string msg)
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach (GameObject player in players)
-        {
-            PhotonView pv = player.GetComponent<PhotonView>();
-
-            if (pv != null && pv.Owner.NickName == senderName)
-            {
-                player.GetComponent<PlayerChatBubble>()
-                      .ShowMessage(message);
-                break;
-            }
-        }
+        Debug.Log("💬 RPC GELDİ: " + msg);
+        chatBubbleText.text = msg;
     }
 }

@@ -2,7 +2,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
-public class PhotonManager : MonoBehaviourPunCallbacks
+public class PhotonRoom : MonoBehaviourPunCallbacks
 {
     void Start()
     {
@@ -11,10 +11,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        Debug.Log("✅ Master'a bağlanıldı");
+        Debug.Log("✅ Master'a bağlandı");
 
         PhotonNetwork.JoinOrCreateRoom(
-            "Room1",
+            "TestRoom",
             new RoomOptions { MaxPlayers = 10 },
             TypedLobby.Default
         );
@@ -22,8 +22,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("🎉 Odaya girildi");
-
+        Debug.Log("🔥 ODAYA GİRİLDİ");
         PhotonNetwork.Instantiate(
             "Player",
             Vector3.zero,

@@ -1,20 +1,23 @@
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class PlayerChatBubble : MonoBehaviourPun
 {
-    public TMP_Text chatText;
+    public TextMeshProUGUI chatText;
 
-    public void ShowMessage(string message)
+    [PunRPC]
+    public void RPC_ShowMessage(string msg)
     {
-        chatText.text = message;
-        CancelInvoke();
-        Invoke(nameof(ClearMessage), 3f);
+        chatText.text = msg;
+        StopAllCoroutines();
+        StartCoroutine(ClearAfterSeconds());
     }
 
-    void ClearMessage()
+    IEnumerator ClearAfterSeconds()
     {
+        yield return new WaitForSeconds(3f);
         chatText.text = "";
     }
 }
