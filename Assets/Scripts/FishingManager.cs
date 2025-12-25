@@ -20,9 +20,6 @@ public class FishingManager : MonoBehaviour
     [Header("Balık Listesi")]
     public Item[] fishItems;
 
-    [Header("Baloncuk Prefab")]
-    public GameObject fishBubblePrefab;
-
     [Header("UI")]
     public GameObject questionMark;
 
@@ -30,16 +27,22 @@ public class FishingManager : MonoBehaviour
     public GameObject fishingRodInHand;
     public GameObject fishingRodOnBack;
 
+    [Header("Kafada Gösterilecek Objeler (Sahnedeki)")]
+    public GameObject fishVisual;       // HeadPoint altına child, başta inactive
+    public GameObject fishBubble;       // fishVisual altına child panel, başta inactive
+
     public Player player;
 
     public FishingState state = FishingState.Idle;
-
-    private GameObject currentFishVisual;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+        // Başta görünmesinler
+        if (fishVisual != null) fishVisual.SetActive(false);
+        if (fishBubble != null) fishBubble.SetActive(false);
     }
 
     public void OnFishingButton()
@@ -76,7 +79,6 @@ public class FishingManager : MonoBehaviour
     IEnumerator WaitForFish()
     {
         state = FishingState.WaitingFish;
-
         yield return new WaitForSeconds(Random.Range(15f, 20f));
 
         state = FishingState.CanReel;
@@ -108,7 +110,6 @@ public class FishingManager : MonoBehaviour
     IEnumerator WaitMiniGameEnd()
     {
         yield return new WaitUntil(() => MiniGameController.Instance.finished);
-
         miniGameUI.SetActive(false);
 
         if (MiniGameController.Instance.success)
@@ -117,24 +118,21 @@ public class FishingManager : MonoBehaviour
             Inventory.Instance.AddItem(fish, 1);
             Debug.Log("🐟 Balık yakalandı: " + fish.name);
 
-            // Balık kafanın üstünde spawn
-            currentFishVisual = Instantiate(fish.equipPrefab);
-            currentFishVisual.transform.SetParent(player.headPoint);
-            currentFishVisual.transform.localPosition = new Vector3(0, 0.5f, 0);
-            currentFishVisual.transform.localRotation = Quaternion.identity;
-            currentFishVisual.transform.localScale = Vector3.one * 0.5f;
-
-            // Baloncuk spawn
-            if (fishBubblePrefab != null)
+            // FishVisual ve Bubble aktif et
+            if (fishVisual != null)
             {
-                GameObject bubble = Instantiate(fishBubblePrefab, currentFishVisual.transform);
-                bubble.transform.localPosition = new Vector3(0, 0.5f, 0);
-                bubble.transform.localRotation = Quaternion.identity;
-                bubble.transform.localScale = Vector3.one;
+                fishVisual.SetActive(true);
+                FishVisual visualScript = fishVisual.GetComponent<FishVisual>();
+                if (visualScript != null)
+                    visualScript.Setup(fish); // sprite değişecek
+            }
 
-                FishBubble bubbleScript = bubble.GetComponent<FishBubble>();
+            if (fishBubble != null)
+            {
+                fishBubble.SetActive(true);
+                FishBubble bubbleScript = fishBubble.GetComponent<FishBubble>();
                 if (bubbleScript != null)
-                    bubbleScript.Setup(fish);
+                    bubbleScript.Setup(fish); // text ve icon değişecek
             }
         }
         else
@@ -145,13 +143,22 @@ public class FishingManager : MonoBehaviour
         ResetFishing();
     }
 
-    // Ekrana tıklayınca olta geri gelir, balık kafada kalır
+    // Ekrana tıklayınca olta geri gelir, kafadaki balık ve baloncuk kaybolur
     public void OnScreenTap()
     {
-        if (currentFishVisual != null)
+        if (fishVisual != null)
+        {
+            fishVisual.SetActive(false);
+        }
+
+        if (fishBubble != null)
+        {
+            fishBubble.SetActive(false);
+        }
+
+        if (fishingRodInHand != null)
         {
             fishingRodInHand.SetActive(true);
-            Destroy(currentFishVisual, 0.1f);
         }
     }
 
